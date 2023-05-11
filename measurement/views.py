@@ -2,16 +2,22 @@ from django.shortcuts import render
 
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, CreateAPIView, RetrieveAPIView
 from measurement.models import Sensor, Measurement
-from measurement.serializers import SensorSerializer, MeasurementSerializer
+from measurement.serializers import SensorSerializer, MeasurementSerializer, SensorListSerializer
 
 
 class CreateSensorView(CreateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
 
+    def perform_create(self, serializer):
+        serializer.save()
+
 class UpdateSensorView(UpdateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
+
+    def perform_update(self, serializer):
+        serializer.save()
 
 class CreateMeasurementView(CreateAPIView):
     queryset = Measurement.objects.all()
@@ -19,7 +25,7 @@ class CreateMeasurementView(CreateAPIView):
 
 class SensorListView(ListAPIView):
     queryset = Sensor.objects.all()
-    serializer_class = SensorSerializer
+    serializer_class = SensorListSerializer
 
 class SensorIdView(RetrieveAPIView):
     queryset = Sensor.objects.all()
