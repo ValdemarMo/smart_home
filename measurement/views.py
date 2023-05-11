@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from rest_framework.decorators import
 
 from rest_framework.generics import CreateAPIView, ListAPIView, UpdateAPIView, CreateAPIView, RetrieveAPIView
 from measurement.models import Sensor, Measurement
