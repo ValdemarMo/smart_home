@@ -9,15 +9,9 @@ class CreateSensorView(CreateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
 
-    def perform_create(self, serializer):
-        serializer.save()
-
 class UpdateSensorView(UpdateAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
-
-    def perform_update(self, serializer):
-        serializer.save()
 
 class CreateMeasurementView(CreateAPIView):
     queryset = Measurement.objects.all()
