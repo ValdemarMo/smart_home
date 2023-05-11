@@ -21,7 +21,7 @@ class SensorListView(ListAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
 
-class SensorDetailView(ListAPIView):
+class SensorIdView(RetrieveAPIView):
     queryset = Sensor.objects.all()
     serializer_class = SensorSerializer
     lookup_field = 'id'
